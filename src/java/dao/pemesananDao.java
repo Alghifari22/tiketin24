@@ -15,11 +15,11 @@ import model.pemesanan;
 
 /**
  *
- * @author Lenovo
+ * @author Kelompok 1 12 RPL 2
  */
 public class pemesananDao {
     
-     private final Connection conn;
+    private final Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
 
@@ -36,7 +36,6 @@ public class pemesananDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 pemesanan pemesanan = new pemesanan();
-                pemesanan.setId(rs.getString("id"));
                 pemesanan.setIdJadwal(rs.getInt("id_jadwal"));
                 pemesanan.setTotalHarga(rs.getDouble("total_harga"));
                 pemesanan.setStatusPembayaran(rs.getString("status_pembayaran"));

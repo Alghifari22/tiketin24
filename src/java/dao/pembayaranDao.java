@@ -16,7 +16,7 @@ import model.pembayaran;
 
 /**
  *
- * @author Lenovo
+ * @author Kelompok 1 12 RPL 2
  */
 public class pembayaranDao {
     
@@ -38,7 +38,6 @@ public class pembayaranDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 pembayaran pembayaran = new pembayaran();
-                pembayaran.setId(rs.getString("id"));
                 pembayaran.setIdUser(rs.getInt("id_user"));
                 pembayaran.setIdPemesanan(rs.getInt("id_pemesanan"));
                 pembayaran.setMetodePembayaran(rs.getString("metode_pembayaran"));

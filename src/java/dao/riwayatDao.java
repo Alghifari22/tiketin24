@@ -36,7 +36,6 @@ public class riwayatDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 riwayat riwayat = new riwayat();
-                riwayat.setId(rs.getString("id"));
                 riwayat.setIdPemesanan(rs.getInt("id_pemesanan"));
                 riwayat.setStatusPerjalanan(rs.getString("status_perjalanan"));
                 listRiwayat.add(riwayat);
