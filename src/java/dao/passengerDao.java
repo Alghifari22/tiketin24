@@ -17,120 +17,120 @@ import model.passenger;
  *
  * @author Kelompok 1 12 RPL 2
  */
-public class passengerDao {
-    
-    private final Connection conn;
-    private PreparedStatement ps;
-    private ResultSet rs;
+                public class passengerDao {
 
-    public passengerDao() {
-        this.conn = koneksi.getKoneksi();
-    }
+                    private final Connection conn;
+                    private PreparedStatement ps;
+                    private ResultSet rs;
 
-    public ArrayList<passenger> getAllPassenger() {
-        ArrayList<passenger> listPassenger = new ArrayList<>();
-        try {
-            String query = "SELECT * FROM passenger ORDER BY id";
+                    public passengerDao() {
+                        this.conn = koneksi.getKoneksi();
+                    }
 
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                passenger passenger = new passenger();
-                passenger.setNama(rs.getString("nama"));
-                passenger.setNIK(rs.getInt("NIK"));
-                passenger.setNoPasport(rs.getInt("no_pasport"));
-                passenger.setNoTelepon(rs.getInt("no_telepon"));
-                passenger.setEmail(rs.getString("email"));
-                listPassenger.add(passenger);
-            }
-        } catch (SQLException se) {
-            System.out.println("Ada Kesalahan: " + se);
-        }
-        return listPassenger;
-    }
+                    public ArrayList<passenger> getAllPassenger() {
+                        ArrayList<passenger> listPassenger = new ArrayList<>();
+                        try {
+                            String query = "SELECT * FROM passenger ORDER BY id";
 
-    public String simpanData(passenger passenger, String page) {
-        String sqlSimpan = null;
-        String message = "Berhasil Menambah Data";
-        int parameterIndex = 1;
+                            ps = conn.prepareStatement(query);
+                            rs = ps.executeQuery();
+                            while (rs.next()) {
+                                passenger passenger = new passenger();
+                                passenger.setNama(rs.getString("nama"));
+                                passenger.setNIK(rs.getInt("NIK"));
+                                passenger.setNoPasport(rs.getInt("no_pasport"));
+                                passenger.setNoTelepon(rs.getInt("no_telepon"));
+                                passenger.setEmail(rs.getString("email"));
+                                listPassenger.add(passenger);
+                            }
+                        } catch (SQLException se) {
+                            System.out.println("Ada Kesalahan: " + se);
+                        }
+                        return listPassenger;
+                    }
 
-        switch (page) {
-            case "edit":
-                sqlSimpan = "UPDATE passenger SET nama=?, NIK=?, no_pasport=?, no_telepon=?, email=? WHERE id=?";
-                break;
-            case "tambah":
-                sqlSimpan = "INSERT INTO passenger (nama, NIK, no_pasport, no_telepon, email) VALUES (?, ?, ?, ?, ?)";
-                break;
-            default:
-                return "Invalid page value";
-        }
+                    public String simpanData(passenger passenger, String page) {
+                        String sqlSimpan = null;
+                        String message = "Berhasil Menambah Data";
+                        int parameterIndex = 1;
 
-        try (PreparedStatement ps = conn.prepareStatement(sqlSimpan)) {
-            ps.setString(parameterIndex++, passenger.getNama());
-            ps.setInt(parameterIndex++, passenger.getNIK());
-            ps.setInt(parameterIndex++, passenger.getNoPasport());
-            ps.setInt(parameterIndex++, passenger.getNoTelepon());
-            ps.setString(parameterIndex++, passenger.getEmail());
+                        switch (page) {
+                            case "edit":
+                                sqlSimpan = "UPDATE passenger SET nama=?, NIK=?, no_pasport=?, no_telepon=?, email=? WHERE id=?";
+                                break;
+                            case "tambah":
+                                sqlSimpan = "INSERT INTO passenger (nama, NIK, no_pasport, no_telepon, email) VALUES (?, ?, ?, ?, ?)";
+                                break;
+                            default:
+                                return "Invalid page value";
+                        }
 
-            if (page.equals("edit")) {
-                ps.setString(parameterIndex, passenger.getId());
-            }
+                        try (PreparedStatement ps = conn.prepareStatement(sqlSimpan)) {
+                            ps.setString(parameterIndex++, passenger.getNama());
+                            ps.setInt(parameterIndex++, passenger.getNIK());
+                            ps.setInt(parameterIndex++, passenger.getNoPasport());
+                            ps.setInt(parameterIndex++, passenger.getNoTelepon());
+                            ps.setString(parameterIndex++, passenger.getEmail());
 
-            int rowsAffected = ps.executeUpdate();
+                            if (page.equals("edit")) {
+                                ps.setString(parameterIndex, passenger.getId());
+                            }
 
-            if (rowsAffected <= 0 && page.equals("edit")) {
-                message = "No passenger found with that ID to update.";
-            } else if (rowsAffected <= 0 && page.equals("tambah")) {
-                message = "Failed to insert passenger.";
-            } else if (rowsAffected > 0 && page.equals("tambah")) {
-                message = "Passenger successfully added.";
-            } else if (rowsAffected > 0 && page.equals("edit")) {
-                message = "Passenger successfully updated.";
-            }
+                            int rowsAffected = ps.executeUpdate();
 
-        } catch (SQLException e) {
-            System.err.println("Ada kesalahan saat penyimpanan data: " + e.getMessage());
-            message = "Terjadi kesalahan saat menyimpan data: " + e.getMessage();
-        }
-        return message;
-    }
+                            if (rowsAffected <= 0 && page.equals("edit")) {
+                                message = "No passenger found with that ID to update.";
+                            } else if (rowsAffected <= 0 && page.equals("tambah")) {
+                                message = "Failed to insert passenger.";
+                            } else if (rowsAffected > 0 && page.equals("tambah")) {
+                                message = "Passenger successfully added.";
+                            } else if (rowsAffected > 0 && page.equals("edit")) {
+                                message = "Passenger successfully updated.";
+                            }
 
-    public passenger getRecordById(String id) {
-        passenger passenger = new passenger();
-        String sqlSearch = "SELECT * FROM passenger WHERE id=?";
+                        } catch (SQLException e) {
+                            System.err.println("Ada kesalahan saat penyimpanan data: " + e.getMessage());
+                            message = "Terjadi kesalahan saat menyimpan data: " + e.getMessage();
+                        }
+                        return message;
+                    }
 
-        try {
-            ps = conn.prepareStatement(sqlSearch);
-            ps.setString(1, id);
-            rs = ps.executeQuery();
+                    public passenger getRecordById(String id) {
+                        passenger passenger = new passenger();
+                        String sqlSearch = "SELECT * FROM passenger WHERE id=?";
 
-            if (rs.next()) {
-                passenger.setId(rs.getString("id"));
-                passenger.setNama(rs.getString("nama"));
-                passenger.setNIK(rs.getInt("NIK"));
-                passenger.setNoPasport(rs.getInt("no_pasport"));
-                passenger.setNoTelepon(rs.getInt("no_telepon"));
-                passenger.setEmail(rs.getString("email"));
-            }
-        } catch (SQLException e) {
-            System.err.println("ada kesalahan pada getrecord" + e.getMessage());
-        }
-        return passenger;
-    }
+                        try {
+                            ps = conn.prepareStatement(sqlSearch);
+                            ps.setString(1, id);
+                            rs = ps.executeQuery();
 
-    public void hapusData(String id) {
-        String sqlHapus = "DELETE FROM passenger WHERE id=?";
-        try {
-            ps = conn.prepareStatement(sqlHapus);
-            ps.setString(1, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Error " + e.getMessage());
-        }
-    }
+                            if (rs.next()) {
+                                passenger.setId(rs.getString("id"));
+                                passenger.setNama(rs.getString("nama"));
+                                passenger.setNIK(rs.getInt("NIK"));
+                                passenger.setNoPasport(rs.getInt("no_pasport"));
+                                passenger.setNoTelepon(rs.getInt("no_telepon"));
+                                passenger.setEmail(rs.getString("email"));
+                            }
+                        } catch (SQLException e) {
+                            System.err.println("ada kesalahan pada getrecord" + e.getMessage());
+                        }
+                        return passenger;
+                    }
 
-    public static void main(String args[]) {
-        passengerDao passengerDao = new passengerDao();
-        System.out.println(passengerDao.getAllPassenger());
-    }
-}
+                    public void hapusData(String id) {
+                        String sqlHapus = "DELETE FROM passenger WHERE id=?";
+                        try {
+                            ps = conn.prepareStatement(sqlHapus);
+                            ps.setString(1, id);
+                            ps.executeUpdate();
+                        } catch (SQLException e) {
+                            System.err.println("Error " + e.getMessage());
+                        }
+                    }
+
+                    public static void main(String args[]) {
+                        passengerDao passengerDao = new passengerDao();
+                        System.out.println(passengerDao.getAllPassenger());
+                    }
+                }
