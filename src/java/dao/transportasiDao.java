@@ -15,7 +15,7 @@ import model.transportasi;
 
 /**
  *
- * @author Alghifari Ramadhan
+ * @author Kelompok 1 12 RPL 2
  */
 public class transportasiDao {
     private final Connection conn;
@@ -107,7 +107,6 @@ public class transportasiDao {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                transport.setId(rs.getString("id"));
                 transport.setNamaTransportasi(rs.getString("nama_transportasi"));
                 transport.setJenisTransportasi(rs.getString("jenis_transportasi"));
                 transport.setNamaPerusahaan(rs.getString("nama_perusahaan"));

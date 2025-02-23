@@ -35,7 +35,6 @@ public class jadwalDao {
 
             while (rs.next()) {
                 jadwal j = new jadwal();
-                j.setId(rs.getInt("id"));
                 j.setIdRute(rs.getInt("id_rute"));
                 j.setWaktuKeberangkatan(rs.getString("waktu_keberangkatan"));
                 j.setWaktuKedatangan(rs.getString("waktu_kedatangan"));

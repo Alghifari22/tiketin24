@@ -15,7 +15,7 @@ import model.notifikasi;
 
 /**
  *
- * @author Lenovo
+ * @author Kelompok 1 12 RPL 2
  */
 public class notifikasiDao {
     
@@ -102,7 +102,6 @@ public class notifikasiDao {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                notifikasi.setId(rs.getString("id"));
                 notifikasi.setIdUser(rs.getInt("id_user"));
                 notifikasi.setPesan(rs.getString("pesan"));
                 notifikasi.setCreatedAt(rs.getString("created_at"));

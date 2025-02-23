@@ -79,4 +79,9 @@ public class transportasiCtr extends HttpServlet {
             out.println("Data berhasil dihapus, OK...");
         }
     }
+    
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 }
