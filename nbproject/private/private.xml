@@ -3,8 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/web/index.html</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/model/riwayat.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/dao/notifikasiDao.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/dao/transportasiDao.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/model/notifikasi.java</file>
             <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/connection/koneksi.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/web/Dashboard/dashboard.html</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/model/user.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/controller/loginCtr.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/controller/transportasiCtr.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/controller/userCtr.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/web/Auth/login.js</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/web/Auth/register.html</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/web/Auth/login.html</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/dao/ruteDao.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/dao/pembayaranDao.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/dao/userDao.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/model/pemesanan.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/web/Auth/register.js</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/src/java/dao/loginDao.java</file>
+            <file>file:/C:/Users/Alghifari%20Ramadhan/Documents/NetBeansProjects/tiketin24/web/Dashboard/dashboard.js</file>
         </group>
     </open-files>
 </project-private>

@@ -49,10 +49,10 @@ public class userDao {
 
         switch (page) {
             case "edit":
-                sqlSimpan = "UPDATE users SET username=?, email=?, role=? WHERE id=?";
+                sqlSimpan = "UPDATE users SET username=?, email=?, role=?, password=? WHERE id=?";
                 break;
             case "tambah":
-                sqlSimpan = "INSERT INTO users (username, email, role) VALUES (?, ?, ?)"; 
+                sqlSimpan = "INSERT INTO users (username, email, role, password) VALUES (?, ?, ?, ?)"; 
                 break;
             default:
                 return "Invalid page value";
@@ -62,6 +62,7 @@ public class userDao {
             ps.setString(parameterIndex++, usr.getUsername());
             ps.setString(parameterIndex++, usr.getEmail());
             ps.setString(parameterIndex++, usr.getRole());
+            ps.setString(parameterIndex++, usr.getPassword());
 
             if (page.equals("edit")) {
                 ps.setString(parameterIndex, usr.getId());

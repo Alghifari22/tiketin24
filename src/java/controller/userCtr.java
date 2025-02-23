@@ -30,7 +30,7 @@ public class userCtr extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
         String page = request.getParameter("page");
         Gson gson = new Gson();
         PrintWriter out = response.getWriter();
@@ -41,19 +41,15 @@ public class userCtr extends HttpServlet {
             String jsonUser = gson.toJson(listuser);
             out.println(jsonUser);
         }else if("tambah".equals(page)){
-            String id = request.getParameter("id");
-            if (id == null || id.trim().isEmpty()) {
-                out.println("ID User tidak boleh kosong.");
-            }else{
-                user usr = new user();
-                usr.setUsername(request.getParameter("username"));
-                usr.setEmail(request.getParameter("email"));
-                usr.setRole(request.getParameter("role"));
+            user usr = new user();
+            usr.setUsername(request.getParameter("username"));
+            usr.setEmail(request.getParameter("email"));
+            usr.setRole(request.getParameter("role"));
+            usr.setPassword(request.getParameter("password"));
                 
-                String resultMessage = usrDao.simpanData(usr, page);
-                response.setContentType("text/plain");
-                out.println(resultMessage);
-            }
+            String resultMessage = usrDao.simpanData(usr, page);
+            response.setContentType("text/plain");
+            out.println(resultMessage);
         }else if("tampil".equals(page)){
             String jsonUser = gson.toJson(usrDao.getRecordById(request.getParameter("id")));
             response.setContentType("text/html;charset=UTF-8");
